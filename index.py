@@ -15,15 +15,9 @@ mysql = MySQL(app)
 # settings
 app.secret_key = "mysecretkey"
 
-# routes
+
 @app.route('/')
 def home():
-  
-    return render_template('login.html')
-    
-
-@app.route('/gestor')
-def gestor():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM casos')
     data = cur.fetchall()
@@ -44,7 +38,7 @@ def search_caso():
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM casos WHERE caso= %s",(bcaso))
         mysql.connection.commit()
-        return redirect(url_for('gestor'))
+        return redirect(url_for('home'))
 
 
 @app.route('/add_caso', methods=['POST'])
@@ -62,7 +56,7 @@ def add_caso():
         cur.execute("INSERT INTO casos (nombre, telefono, localidad, direccion, afectacion, caso, estado) VALUES (%s, %s, %s, %s, %s, %s, %s)", (nombre, telefono, localidad, direccion, afectacion, caso, estado))
         mysql.connection.commit()
         flash('El caso a sido agregado.')
-        return redirect(url_for('gestor'))
+        return redirect(url_for('home'))
 
 
 @app.route('/edit/<id>')
@@ -98,7 +92,7 @@ def update_case(id):
         """,(nombre, telefono, localidad, direccion, afectacion, caso, estado,id))
         mysql.connection.commit()
         flash('Case update successfully')
-        return redirect(url_for('gestor'))
+        return redirect(url_for('home'))
 
 
 @app.route('/delete/<string:id>')
@@ -106,7 +100,7 @@ def delete_caso(id):
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM casos WHERE id ={0}' .format(id))
     mysql.connection.commit()
-    return redirect(url_for('gestor'))
+    return redirect(url_for('home'))
 
 if __name__=='__main__':
     app.run(debug=True)
