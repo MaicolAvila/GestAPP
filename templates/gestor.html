@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GestiumAPP</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    
+  </head>
+  <body>
+
+        
+
+        <ul class="head">
+          <h1 class="title">Gestion de casos</h1>
+        </ul>
+        <br>
+
+        <h1>Agregar caso</h1>
+        <blockquote class="container">
+          <form action="/add_caso"method="POST" >
+            <input  class="agregar" type="text" name="caso" placeholder="numero de caso">
+            <input  class="agregar" type="text" name="nombre" placeholder="nombre de arrendatario">
+            <input  class="agregar" type="text" name="telefono" placeholder="telefono">
+            <input  class="agregar" type="text" name="localidad" placeholder="localidad">
+            <input  class="agregar" type="text" name="direccion" placeholder="direccion">
+            <input  class="agregar" type="text" name="afectacion" placeholder="afectacion">
+            <input  class="agregar" type="text" name="estado" placeholder="estado">
+  
+            <br>
+            <button type="submit">save</button>
+          </form>
+        </blockquote>
+        
+        
+        <br>
+        <table class="table">
+          <thead>
+          <tr class="headtable">
+            <td class="date1">Caso</td>
+            <td class="date1">Nombre</td>
+            <td class="date1">Numero</td>
+            <td class="date1">Localidad</td>
+            <td class="date1">Direccion</td>
+            <td class="date1">Afectacion</td>
+            <td class="date1">Estado</td>
+            <td class="date1">Operacion</td>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for case in casos %}
+          <tr>
+            <td class="date">{{case.6}}</td>
+            <td class="date">{{case.0}}</td>
+            <td class="date">{{case.1}}</td>
+            <td class="date">{{case.2}}</td>
+            <td class="date">{{case.3}}</td>
+            <td class="date">{{case.4}}</td>
+            <td class="date">{{case.7}}</td>
+            <td class="date">
+              <a href="/edit/{{case.5}}" class="btn btn-secondary">EDIT</a>
+              <a href="/delete/{{case.5}}" class="btn btn-danger btn-delete">DELETE</a>
+            </td>
+            
+            
+          </tr>
+          {% endfor %}
+   
+          
+        </tbody>
+
+        
+        </table>
+        
+        
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+
+      
+
+
+    <footer>
+      <h3>@Maicol Avila</h3>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+   
+    <h1>Login</h1>
+    <span><a href="/singup">SignUp </a> </span>
+    <span>or <a href="/gestor">Gestor </a> </span>
+
+
+    <form class="" action="login.php" method="post">
+      <input type="text" name="email" placeholder="Enter your email">
+      <input type="password" name="password" placeholder="Enter your password">
+      <input type="submit"  value="Send">
+    </form>
+  </body>
+</html>
