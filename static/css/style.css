@@ -167,5 +167,10 @@ button[type="submit"]{
   margin-bottom: 1px;
   border: 1px solid gray;
 }
+.calendar{
+  width: 70%;
+  height: -webkit-fill-available;
+  margin: 5%;
+}
 
 
