@@ -1,2 +1,2 @@
 # GestAPP
-GestAPP es una aplicacion web escrita y programada en python, html, css y utilizando base de datos. Esta en proceso ya que estoy intentando agregar la api de google calendar para crear evento desde la pagina.
+GestAPP es una aplicacion web escrita y programada en python, html y css, utilizando tambien base de datos. Esta en proceso ya que estoy intentando agregar la api de google calendar para crear eventos desde la pagina.
